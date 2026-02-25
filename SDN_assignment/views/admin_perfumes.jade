@@ -1,0 +1,55 @@
+extends layout
+
+block content
+  h1 Admin - Perfumes
+
+  if perfumes && perfumes.length
+    table
+      thead
+        tr
+          th Name
+          th Brand
+          th Price
+      tbody
+        each perfume in perfumes
+          tr
+            td= perfume.perfumeName
+            td= perfume.brand ? perfume.brand.brandName : 'N/A'
+            td $#{perfume.price}
+  else
+    p No perfumes yet.
+
+  h2 Create new perfume
+  form(method='post', action='/admin/perfumes')
+    div
+      label(for='perfumeName') Name
+      input#perfumeName(type='text', name='perfumeName', required=true)
+    div
+      label(for='uri') Image URL
+      input#uri(type='text', name='uri', required=true)
+    div
+      label(for='price') Price
+      input#price(type='number', step='0.01', name='price', required=true)
+    div
+      label(for='concentration') Concentration
+      input#concentration(type='text', name='concentration', required=true)
+    div
+      label(for='description') Description
+      textarea#description(name='description', rows='3', required=true)
+    div
+      label(for='ingredients') Ingredients
+      textarea#ingredients(name='ingredients', rows='2', required=true)
+    div
+      label(for='volume') Volume (ml)
+      input#volume(type='number', name='volume', required=true)
+    div
+      label(for='targetAudience') Target audience
+      select#targetAudience(name='targetAudience', required=true)
+        option(value='male') Male
+        option(value='female') Female
+        option(value='unisex') Unisex
+    div
+      label(for='brand') Brand ID
+      input#brand(type='text', name='brand', required=true)
+    button(type='submit') Create
+

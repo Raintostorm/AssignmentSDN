@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='get', action='/')
+    .filters
+      input(type='text', name='name', placeholder='Search by perfume name', value=searchName)
+      select(name='brandId')
+        option(value='') All brands
+        each brand in brands
+          option(value=brand._id selected=(selectedBrandId && selectedBrandId.toString() === brand._id.toString()) ? 'selected' : undefined)= brand.brandName
+      button(type='submit') Search
+
+  if perfumes && perfumes.length
+    table.perfume-table
+      thead
+        tr
+          th Image
+          th Name
+          th Target
+          th Brand
+          th Price
+          th Details
+      tbody
+        each perfume in perfumes
+          tr
+            td
+              if perfume.uri
+                img(src=perfume.uri, alt=perfume.perfumeName, width='80')
+            td= perfume.perfumeName
+            td= perfume.targetAudience
+            td= perfume.brand ? perfume.brand.brandName : 'N/A'
+            td $#{perfume.price}
+            td
+              a(href='/perfumes/' + perfume._id + '/view') View
+  else
+    p No perfumes found.

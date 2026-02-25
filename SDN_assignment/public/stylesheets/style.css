@@ -1,0 +1,84 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.filters {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.perfume-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.perfume-table th,
+.perfume-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.perfume-table th {
+  text-align: left;
+  background-color: #f5f5f5;
+}
+
+.perfume-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.perfume-main {
+  display: flex;
+  gap: 20px;
+}
+
+.perfume-image {
+  max-width: 240px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.perfume-info p {
+  margin: 4px 0;
+}
+
+.concentration-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.perfume-description {
+  margin-top: 10px;
+}
+
+.perfume-comments .comment-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.comment-form {
+  margin-top: 20px;
+}
+
+.comment-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 400px;
+}

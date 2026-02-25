@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Login
+  form(method='post', action='/auth/login')
+    div
+      label(for='email') Email
+      input#email(type='email', name='email', required=true)
+    div
+      label(for='password') Password
+      input#password(type='password', name='password', required=true)
+    button(type='submit') Login
+

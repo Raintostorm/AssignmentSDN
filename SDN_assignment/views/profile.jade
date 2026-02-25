@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1 Profile
+
+  if member
+    h2 Personal information
+    form(method='post', action='/members/profile')
+      div
+        label(for='name') Name
+        input#name(type='text', name='name', value=member.name)
+      div
+        label(for='yob') Year of Birth
+        input#yob(type='number', name='YOB', value=member.YOB)
+      div
+        label(for='gender') Gender
+        select#gender(name='gender')
+          option(value='') Select
+          option(value='true' selected=member.gender === true) Male
+          option(value='false' selected=member.gender === false) Female
+      button(type='submit') Save profile
+
+    h2 Change password
+    form(method='post', action='/members/change-password')
+      div
+        label(for='oldPassword') Old password
+        input#oldPassword(type='password', name='oldPassword', required=true)
+      div
+        label(for='newPassword') New password
+        input#newPassword(type='password', name='newPassword', required=true)
+      button(type='submit') Change password
+  else
+    p You need to be logged in to view your profile.
+

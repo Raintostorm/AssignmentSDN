@@ -1,0 +1,67 @@
+extends layout
+
+block content
+  if perfume
+    .perfume-detail
+      h1= perfume.perfumeName
+
+      .perfume-main
+        if perfume.uri
+          img.perfume-image(src=perfume.uri, alt=perfume.perfumeName)
+
+        .perfume-info
+          if perfume.brand
+            p
+              strong Brand:
+              |  #{perfume.brand.brandName}
+          p
+            strong Target:
+            |  #{perfume.targetAudience}
+          p
+            strong Price:
+            |  $#{perfume.price}
+          p
+            strong Volume:
+            |  #{perfume.volume} ml
+          p
+            strong Ingredients:
+            |  #{perfume.ingredients}
+
+          // Outstanding concentration badge
+          p
+            strong Concentration:
+            span.concentration-badge #{perfume.concentration}
+
+      .perfume-description
+        h2 Description
+        p= perfume.description
+
+      .perfume-comments
+        h2 Comments
+        if perfume.comments && perfume.comments.length
+          each comment in perfume.comments
+            .comment-item
+              p
+                strong Rating:
+                |  #{comment.rating}
+              p
+                strong By:
+                |  #{comment.author && comment.author.name ? comment.author.name : 'Member'}
+              p= comment.content
+        else
+          p No comments yet.
+
+      .comment-form
+        h3 Leave your comment
+        p Note: You must be logged in as a member and you can comment on this perfume only once.
+        form(method='post', action=`/perfumes/${perfume._id}/comments`)
+          label(for='rating') Rating (1-3)
+          input#rating(type='number', name='rating', min='1', max='3', required=true)
+
+          label(for='content') Comment
+          textarea#content(name='content', rows='3', required=true)
+
+          button(type='submit') Submit Comment
+  else
+    h1 Perfume not found
+

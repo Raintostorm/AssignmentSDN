@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1 Register
+  form(method='post', action='/auth/register')
+    div
+      label(for='email') Email
+      input#email(type='email', name='email', required=true)
+    div
+      label(for='name') Name
+      input#name(type='text', name='name', required=true)
+    div
+      label(for='yob') Year of Birth
+      input#yob(type='number', name='YOB')
+    div
+      label(for='gender') Gender
+      select#gender(name='gender')
+        option(value='') Select
+        option(value='true') Male
+        option(value='false') Female
+    div
+      label(for='password') Password
+      input#password(type='password', name='password', required=true)
+    button(type='submit') Register
+

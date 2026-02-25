@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 Admin - Brands
+
+  if brands && brands.length
+    table
+      thead
+        tr
+          th Name
+      tbody
+        each brand in brands
+          tr
+            td= brand.brandName
+  else
+    p No brands yet.
+
+  h2 Create new brand
+  form(method='post', action='/brands')
+    div
+      label(for='brandName') Brand name
+      input#brandName(type='text', name='brandName', required=true)
+    button(type='submit') Create
+

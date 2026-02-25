@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1 Admin - Members (Collectors)
+
+  if members && members.length
+    table
+      thead
+        tr
+          th Email
+          th Name
+          th Year of Birth
+          th Gender
+          th Admin
+      tbody
+        each member in members
+          tr
+            td= member.email
+            td= member.name
+            td= member.YOB
+            td= member.gender === true ? 'Male' : (member.gender === false ? 'Female' : '')
+            td= member.isAdmin ? 'Yes' : 'No'
+  else
+    p No members found.
+
